@@ -1,0 +1,61 @@
+.description__container {
+  width: 52rem;
+  position: relative;
+  top: 30%;
+  height: 21rem;
+
+  @media (max-width: 75em) {
+    //1200px
+
+    transform: scale(0.7);
+  }
+
+  .description {
+    width: 100%;
+    font-size: 2rem;
+    transition: all 0.3s;
+    color: white;
+    span {
+      font-size: 4.3rem;
+      font-weight: 700;
+    }
+    &:hover {
+      transform: translateY(-3rem);
+    }
+  }
+
+  .nonstop__text {
+    width: 100%;
+    padding: 2rem;
+    margin-top: 2rem;
+    position: absolute;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    align-items: center;
+    overflow: hidden;
+
+    &__scrolling {
+      width: 100%;
+      position: absolute;
+      text-align: start;
+      white-space: nowrap;
+      animation: moveInfinite 22s infinite;
+      animation-delay: 0.2s;
+    }
+  }
+}
+
+@keyframes moveInfinite {
+  0% {
+    left: 0%;
+  }
+  100% {
+    left: 100%;
+  }
+}
