@@ -1,0 +1,55 @@
+.donut {
+  position: relative;
+  border-radius: 50%;
+  background: radial-gradient(circle, transparent 0%, #000 100%);
+  padding: 0 10rem;
+  top: 6%;
+  left: 9%;
+  width: 36rem;
+  height: 54rem;
+
+  &:hover {
+    background: radial-gradient(circle, transparent 60%, #fff 30%);
+    box-shadow: 0rem 0rem 10rem 10rem rgba(255, 255, 255, 0.3);
+  }
+
+  &::hover .donut__effect__innerBlurr {
+    box-shadow: rgba(255, 255, 255, 0.9) 0rem 2.2rem 3rem 1rem;
+  }
+
+  &__img {
+    padding: 6rem;
+    position: absolute;
+    top: 15%;
+    left: 8%;
+    background-image: url(./background-removebg.png);
+    width: 36rem;
+    height: 33rem;
+    background-position: center;
+    background-size: cover;
+    z-index: 1;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      transform: scale(1.1);
+      border-radius: 50%;
+    }
+  }
+
+  &__effect__innerBlurr {
+    position: absolute;
+    border-radius: 50%;
+    top: 11%;
+    left: 13%;
+    width: 42rem;
+    height: 42rem;
+    background-image: linear-gradient(to left bottom, rgba(0, 0, 0, 0.6), black),
+      url(./images2.jpg);
+    box-shadow: 0rem 0rem 3rem 3rem rgba(255, 255, 255, 0.4);
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+  }
+}
