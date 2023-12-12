@@ -1,6 +1,5 @@
-import { Layout, SongLists } from '../../components';
+import { Layout, Phone, SongLists } from '../../components';
 import { Song } from '../../components/song';
-import styles from '../home/HomePage.module.scss';
 
 export default function SongPage() {
   const musicLists = [
@@ -39,7 +38,8 @@ export default function SongPage() {
   return (
     <Layout>
       <Song.Section>
-        <SongLists />
+        <SongLists songs={musicLists} />
+        <Phone />
       </Song.Section>
     </Layout>
   );
