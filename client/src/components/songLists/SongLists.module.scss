@@ -1,6 +1,8 @@
 .songLists {
   display: flex;
   flex-direction: column;
+  position: relative;
+  left: 7%;
 
   &__title {
     padding: 1rem;
