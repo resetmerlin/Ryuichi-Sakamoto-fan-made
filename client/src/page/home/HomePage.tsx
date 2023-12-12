@@ -1,16 +1,12 @@
-import { Description, Donut, Header } from '../../components';
-import styles from './HomePage.module.scss';
+import { Description, Donut, Home, Layout } from '../../components';
 
 export default function HomePage() {
   return (
-    <>
-      <Header />
-      <main id="container">
-        <section className={styles.home}>
-          <Donut />
-          <Description />
-        </section>
-      </main>
-    </>
+    <Layout>
+      <Home.Section>
+        <Donut />
+        <Description />
+      </Home.Section>
+    </Layout>
   );
 }
