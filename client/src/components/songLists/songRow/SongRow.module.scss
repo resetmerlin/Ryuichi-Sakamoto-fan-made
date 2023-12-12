@@ -10,11 +10,13 @@
   transition: all 0.2s ease-in-out;
   &:hover {
     background-color: rgba(192, 192, 192, 0.3);
-    transform: translateY(-2rem) scale(1.03);
+    transform: translateY(-1.5rem) scale(1.02);
   }
 
   img {
     height: 100%;
+    width: 25%;
+    object-fit: cover;
   }
 
   &__text {
@@ -25,7 +27,7 @@
     width: 80%;
     span:nth-child(1) {
       font-size: 2rem;
-      font-weight: 600;
+      font-weight: 500;
       margin-bottom: 0.5rem;
     }
   }
