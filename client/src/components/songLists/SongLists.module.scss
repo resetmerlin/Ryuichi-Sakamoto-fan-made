@@ -1,0 +1,11 @@
+.songLists {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    padding: 1rem;
+
+    color: wheat;
+    font-size: 2.5rem;
+  }
+}
