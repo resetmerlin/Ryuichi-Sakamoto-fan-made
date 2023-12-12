@@ -1,12 +1,16 @@
+import { ISong } from '../../../types';
 import styles from './SongRow.module.scss';
 
-export default function SongRow() {
+type IProps = {
+  song: ISong;
+};
+export default function SongRow({ song }: IProps) {
   return (
     <button className={styles.songRow}>
-      <img src="./song1.jpg" alt="song1" />
+      <img src={song?.img} alt="song1" />
       <div className={styles.songRow__text}>
-        <span>Amore</span>
-        <span>Ryuichi Sakamoto</span>
+        <span>{song?.name}</span>
+        <span>{song?.artist}</span>
       </div>
       <i className={`bx bx-play-circle ${styles.songRow__icon}`}></i>
     </button>
