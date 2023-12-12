@@ -9,7 +9,7 @@ export default function Header() {
       </div>
 
       <div className={styles.header__right}>
-        <Link to="/songs">Songs</Link>
+        <Link to="songs">Songs</Link>
         <Link to="/">About</Link>
         <Link to="/">How to use</Link>
         <Link to="/">Services</Link>
