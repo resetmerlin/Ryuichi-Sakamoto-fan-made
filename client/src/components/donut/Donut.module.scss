@@ -33,7 +33,7 @@
     position: absolute;
     top: 11%;
     left: 13%;
-    background-image: url(./background-removebg.png);
+    background-image: url('./background-removebg.png');
     width: 39rem;
     height: 42rem;
     background-position: center;
@@ -60,7 +60,7 @@
     width: 46rem;
     height: 46rem;
     background-image: linear-gradient(to left bottom, rgba(0, 0, 0, 0.6), black),
-      url(./images2.jpg);
+      url('./images2.jpg');
     box-shadow: 0rem 0rem 3rem 3rem rgba(255, 255, 255, 0.4);
     background-size: cover;
     background-position: center;
