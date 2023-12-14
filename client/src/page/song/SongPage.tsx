@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Layout, Phone, Song, SongLists } from '../../components';
 import { musicLists } from '../../lib';
 import { ISong } from '../../types';
@@ -28,10 +28,12 @@ export default function SongPage() {
     }
   };
 
+  /** Change volumn via input range */
   const changeVolumneMusic = (e: React.FormEvent<HTMLInputElement>) => {
     musicRef.current.volume = +e.currentTarget.value / 100;
   };
 
+  /** Change duration via input range */
   const changeDurationMusic = (e: React.FormEvent<HTMLInputElement>) => {
     const seekTime = (musicRef.current.duration / 100) * +e.currentTarget.value;
     musicRef.current.currentTime = seekTime;
