@@ -8,10 +8,20 @@ type IProps = {
   isPlaying: boolean;
   changeVolumneMusic: (e: React.FormEvent<HTMLInputElement>) => void;
   changeDurationMusic: (e: React.FormEvent<HTMLInputElement>) => void;
+  goNextMusic: () => void;
+  goPrevMusic: () => void;
 };
 
 export default forwardRef<HTMLInputElement, IProps>(function Phone(
-  { currSong, pauseMusic, isPlaying, changeVolumneMusic, changeDurationMusic },
+  {
+    currSong,
+    pauseMusic,
+    isPlaying,
+    changeVolumneMusic,
+    changeDurationMusic,
+    goNextMusic,
+    goPrevMusic,
+  },
   ref
 ) {
   return (
@@ -34,7 +44,7 @@ export default forwardRef<HTMLInputElement, IProps>(function Phone(
         <div className="date">Tuesday, 9 August</div>
 
         <div className="button__wrapper">
-          <button>
+          <button onClick={goPrevMusic}>
             <i className="bx bx-skip-previous"></i>
           </button>
           <button onClick={pauseMusic}>
@@ -45,7 +55,7 @@ export default forwardRef<HTMLInputElement, IProps>(function Phone(
               className={`bx bx-pause-circle ${!isPlaying ? 'flex' : 'none'}`}
             ></i>
           </button>
-          <button>
+          <button onClick={goNextMusic}>
             <i className="bx bx-skip-next"></i>
           </button>
         </div>
