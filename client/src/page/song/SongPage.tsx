@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Layout, Phone, Song, SongLists } from '../../components';
 import { musicLists } from '../../lib';
 import { ISong } from '../../types';
@@ -12,23 +12,19 @@ export default function SongPage() {
 
   const playMusic = (song: ISong) => {
     if (durationToggleRef.current) durationToggleRef.current.value = '0';
-    musicRef.current.pause();
-    setIsPlaying(false);
+    pause();
 
     setCurrSong(song);
 
     musicRef.current = new Audio(`../${song?.music}`);
-    musicRef.current.play();
-    setIsPlaying(true);
+    play();
   };
 
   const pauseMusic = () => {
     if (musicRef.current.duration > 0 && !musicRef.current.paused) {
-      musicRef.current.pause();
-      setIsPlaying(false);
+      pause();
     } else {
-      musicRef.current.play();
-      setIsPlaying(true);
+      play();
     }
   };
 
@@ -38,7 +34,6 @@ export default function SongPage() {
 
   const changeDurationMusic = (e: React.FormEvent<HTMLInputElement>) => {
     const seekTime = (musicRef.current.duration / 100) * +e.currentTarget.value;
-
     musicRef.current.currentTime = seekTime;
   };
 
@@ -47,11 +42,10 @@ export default function SongPage() {
     const currIndex = musicLists.findIndex((element) => element === currSong);
 
     if (currIndex === musicLists.length - 1) {
-      setCurrSong(musicLists[0]);
-      musicRef.current = new Audio(`../${musicLists[0]?.music}`);
+      settingMusic(0);
     } else {
-      setCurrSong(musicLists[currIndex + 1]);
-      musicRef.current = new Audio(`../${musicLists[currIndex + 1]?.music}`);
+      const nextIndex = currIndex + 1;
+      settingMusic(nextIndex);
     }
     musicRef.current.play();
   };
@@ -61,15 +55,28 @@ export default function SongPage() {
     const currIndex = musicLists.findIndex((element) => element === currSong);
 
     if (currIndex === 0) {
-      setCurrSong(musicLists[musicLists.length - 1]);
-      musicRef.current = new Audio(
-        `../${musicLists[musicLists.length - 1]?.music}`
-      );
+      const lastIndex = musicLists.length - 1;
+      settingMusic(lastIndex);
     } else {
-      setCurrSong(musicLists[currIndex - 1]);
-      musicRef.current = new Audio(`../${musicLists[currIndex - 1]?.music}`);
+      const prevIndex = currIndex - 1;
+      settingMusic(prevIndex);
     }
     musicRef.current.play();
+  };
+
+  const settingMusic = (index: number) => {
+    setCurrSong(musicLists[index]);
+    musicRef.current = new Audio(`../${musicLists[index]?.music}`);
+  };
+
+  const pause = () => {
+    musicRef.current.pause();
+    setIsPlaying(false);
+  };
+
+  const play = () => {
+    musicRef.current.play();
+    setIsPlaying(true);
   };
 
   return (
