@@ -42,6 +42,36 @@ export default function SongPage() {
     musicRef.current.currentTime = seekTime;
   };
 
+  const goNextMusic = () => {
+    musicRef.current.pause();
+    const currIndex = musicLists.findIndex((element) => element === currSong);
+
+    if (currIndex === musicLists.length - 1) {
+      setCurrSong(musicLists[0]);
+      musicRef.current = new Audio(`../${musicLists[0]?.music}`);
+    } else {
+      setCurrSong(musicLists[currIndex + 1]);
+      musicRef.current = new Audio(`../${musicLists[currIndex + 1]?.music}`);
+    }
+    musicRef.current.play();
+  };
+
+  const goPrevMusic = () => {
+    musicRef.current.pause();
+    const currIndex = musicLists.findIndex((element) => element === currSong);
+
+    if (currIndex === 0) {
+      setCurrSong(musicLists[musicLists.length - 1]);
+      musicRef.current = new Audio(
+        `../${musicLists[musicLists.length - 1]?.music}`
+      );
+    } else {
+      setCurrSong(musicLists[currIndex - 1]);
+      musicRef.current = new Audio(`../${musicLists[currIndex - 1]?.music}`);
+    }
+    musicRef.current.play();
+  };
+
   return (
     <Layout>
       <Song.Section>
@@ -53,6 +83,8 @@ export default function SongPage() {
           changeVolumneMusic={changeVolumneMusic}
           changeDurationMusic={changeDurationMusic}
           ref={durationToggleRef}
+          goNextMusic={goNextMusic}
+          goPrevMusic={goPrevMusic}
         />
       </Song.Section>
     </Layout>
